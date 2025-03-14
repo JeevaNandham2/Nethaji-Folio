@@ -1,6 +1,7 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/skills2.png";
-import meter3 from "../assets/img/skills4.png";
+import meter1 from "../assets/img/video_10647765.png";
+import meter2 from "../assets/img/video-editor_11904564.png";
+import meter3 from "../assets/img/portrait_17368077.png";
+import meter4 from "../assets/img/video5.jpg"
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import arrow1 from "../assets/img/arrow1.svg";
@@ -52,7 +53,7 @@ export const Skills = () => {
 
                             </div>
                             <div className="item">
-                                <img src={meter1} alt="Image" />
+                                <img src={meter4} alt="Image" />
                                 <h5>vfx and MotionGraphics</h5>
                                 
                             </div>

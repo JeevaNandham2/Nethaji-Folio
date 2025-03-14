@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import logo from '../assets/img/noisylogo2-removebg-preview.png';
-import navIcon1 from '../assets/img/nav-icon1.svg';
-import navIcon2 from '../assets/img/icons8-call-male-48.png';
-import navIcon3 from '../assets/img/nav-icon3.svg';
 import { HashLink } from 'react-router-hash-link';
 import { BrowserRouter as Router } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Instagram, Email, Call,LinkedIn } from '@mui/icons-material';
+
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -18,7 +18,7 @@ export const NavBar = () => {
       } else {
         setScrolled(false);
       }
-    }
+    };
 
     window.addEventListener("scroll", onScroll);
 
@@ -27,32 +27,59 @@ export const NavBar = () => {
 
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
+    setExpanded(false);
   };
 
   return (
     <Router>
-      <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
+      <Navbar expand="md" className={scrolled ? "scrolled navbar" : "navbar"} expanded={expanded}>
         <Container>
           <Navbar.Brand href="/">
-            <img src={logo} alt="MKJ" />
+            {/* Logo placeholder */}
+            <div className='header'>
+        <div className='header__left'>
+        <h1>Nethaji<span>.K</span></h1>
+        </div>
+		</div>
+          
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav">
+          <Navbar.Toggle 
+            aria-controls="basic-navbar-nav" 
+            onClick={() => setExpanded(!expanded)}
+          >
             <span className="navbar-toggler-icon"></span>
           </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-              <Nav.Link href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>About Me</Nav.Link> {/* Added About Me Link */}
-              <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-              <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>projects</Nav.Link>
+              {["home", "about", "skills", "projects"].map((section) => (
+                <Nav.Link
+                  key={section}
+                  href={`#${section}`}
+                  className={activeLink === section ? 'active navbar-link' : 'navbar-link'}
+                  onClick={() => onUpdateActiveLink(section)}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </Nav.Link>
+              ))}
             </Nav>
             <span className="navbar-text">
+              
               <div className="social-icon">
-                <a href="https://www.linkedin.com/in/jeeva-nandham-51474a311?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src={navIcon1} alt="" /></a>
-                <a href="https://www.facebook.com/jeffjeeva.jeffjeeva"><img src={navIcon2} alt="" /></a>
-                <a href="https://www.instagram.com/_jaddos_king_/profilecard/?igsh=ODhrOHVsY3g4MXp6"><img src={navIcon3} alt="" /></a>
+              <a href="mailto:nethaji1283@gmail.com">
+  <Email />
+</a>
+
+                <a href="tel:+91887045">
+                  <Call />
+                </a>
+                <a href="https://www.instagram.com/noisy_cuts/" target="_blank" rel="noopener noreferrer">
+                  <Instagram />
+                </a>
+                <a href="https://www.linkedin.com/in/nethaji-k-3999a6355">
+                <LinkedIn/>
+                </a>
               </div>
-              <HashLink to='#connect'>
+              <HashLink to="#contact">
                 <button className="vvd"><span>Let’s Connect</span></button>
               </HashLink>
             </span>

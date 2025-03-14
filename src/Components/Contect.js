@@ -1,96 +1,78 @@
-import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import contactImg from "../assets/img/contact-img.svg";
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
+import React from 'react';
+import { Element } from 'react-scroll';
+import IconButton from '@mui/material/IconButton';
 
- const Contact = () => {
-  const formInitialDetails = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
-  }
-  const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [buttonText, setButtonText] = useState('Send');
-  const [status, setStatus] = useState({});
+import contactimg from '../assets/img/original-f8068a9b6ddef20464e34e6d2ff4d8d0.gif';
+import message from '../assets/img/gmail-removebg-preview.png';
+import facebook from '../assets/img/Linkedin.png';
+import call from '../assets/img/call-removebg-preview.png';
+import instagram from '../assets/img/instagram-removebg-preview.png';
 
-  const onFormUpdate = (category, value) => {
-      setFormDetails({
-        ...formDetails,
-        [category]: value
-      })
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setButtonText("Sending...");
-    let response = await fetch("http://localhost:3000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    setButtonText("Send");
-    let result = await response.json();
-    setFormDetails(formInitialDetails);
-    if (result.code == 200) {
-      setStatus({ succes: true, message: 'Message sent successfully'});
-    } else {
-      setStatus({ succes: false, message: 'Something went wrong, please try again later.'});
-    }
-  };
-
+const Contactmy = () => {
   return (
-    <section className="contact" id="connect">
-      <Container>
-        <Row className="align-items-center">
-          <Col size={12} md={6}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <img className={isVisible ? "animate__animated animate__zoomIn" : ""} src={contactImg} alt="Contact Us"/>
-              }
-            </TrackVisibility>
-          </Col>
-          <Col size={12} md={6}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <h2>Get In Touch</h2>
-                <form onSubmit={handleSubmit}>
-                  <Row>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.lasttName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)}/>
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="email" value={formDetails.email} placeholder="Email Address" onChange={(e) => onFormUpdate('email', e.target.value)} />
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="tel" value={formDetails.phone} placeholder="Phone No." onChange={(e) => onFormUpdate('phone', e.target.value)}/>
-                    </Col>
-                    <Col size={12} className="px-1">
-                      <textarea rows="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
-                      <button type="submit"><span>{buttonText}</span></button>
-                    </Col>
-                    {
-                      status.message &&
-                      <Col>
-                        <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
-                      </Col>
-                    }
-                  </Row>
-                </form>
-              </div>}
-            </TrackVisibility>
-          </Col>
-        </Row>
-      </Container>
-    </section>
-  )
-}
-export default Contact;
+    <Element className="contact" id="contact">
+      <div className="contact__content">
+        <h1 className="contact__title">Contact Me 📞</h1>
+        <p className="contact__subtitle">
+          Whether you want to discuss a project or just say hi, I'm open to chat!
+        </p>
+
+        <div className="contact__info">
+          <h2 className="contact__number">+91-8870459670</h2>
+          <h3 className="contact__email">
+            <a href="mailto:nethaji1283@gmail.com">nethaji1283@gmail.com</a>
+          </h3>
+        </div>
+
+        <div className="contact__details">
+          <p className="contact__email-info">
+            You can reach me via email or through the contact options below:
+          </p>
+        </div>
+
+        <div className="contact__social">
+          <a href="mailto:nethaji1283@gmail.com" aria-label="Email">
+            <IconButton className="contact__icon email">
+              <img src={message} className="contact__image icon-img" alt="message" />
+          
+            </IconButton>
+          </a>
+          <a href="tel:+918870459670" aria-label="Call me">
+            <IconButton className="contact__icon call">
+              <img src={call} className="contact__image icon-img" alt="call" />
+              
+            </IconButton>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nethaji-k-3999a6355"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <IconButton className="contact__icon facebook">
+              <img src={facebook} className="contact__image icon-img" alt="facebook" />
+              
+            </IconButton>
+          </a>
+          <a
+            href="https://www.instagram.com/noisy_cuts/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <IconButton className="contact__icon instagram">
+              <img src={instagram} className="contact__image icon-img" alt="instagram" />
+              
+            </IconButton>
+          </a>
+        </div>
+
+        <div className="contact__image-container">
+          <img src={contactimg} className="contact__image" alt="Contact Illustration" />
+        </div>
+      </div>
+    </Element>
+  );
+};
+
+export default Contactmy;

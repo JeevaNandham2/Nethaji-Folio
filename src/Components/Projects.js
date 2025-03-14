@@ -34,25 +34,27 @@ export const Projects = () => {
     },
     {
       title: "YOUTUBE VIDEOS",
-      description: "Eye-catching thumbnails that boost clicks and engagement.",
+      description: "🎬 Transforming ideas into captivating YouTube videos that engage, inspire, and leave a lasting impact! 🚀✨",
       imgUrl: projImg4,
       link : "https://youtu.be/OH0ksqcZVpk"
     },
     {
-      title: "Business Startup",
-      description: " ",
+      title: "THUMBNAIL",
+      description: "🔥 Scroll-Stopping Thumbnails That Boost Views & Engagement! 🎬🚀 ",
       imgUrl: projImg5,
-      
+      link :"https://drive.google.com/drive/folders/1Jee3y4KawPfzg4FI9xvknV7z29yx0obp?usp=sharing"
     },
     {
-      title: "Photography",
-      description: " ",
+      title: "PHOTOGRAPHY",
+      description: "📸 Capturing Moments, Creating Memories – One Click at a Time! ✨ ",
       imgUrl: projImg6,
+      link:"https://drive.google.com/drive/folders/1cDNHg5yZsl4RL8WqnyiWi7YnySeRJDvi?usp=drive_link"
     },
     {
-      title: "Photography",
-      description: " ",
+      title: "WEDDING",
+      description: "🌟 Cherish Every Smile, Every Tear, Every Moment – Perfectly Captured! ",
       imgUrl: projImg7,
+      link : "https://drive.google.com/drive/folders/1XWlL55VXvF1t8KeXCvxI4Zh1-rBXptUN?usp=drive_link"
     },
   ];
 
@@ -65,7 +67,8 @@ export const Projects = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
                 <h2>Services</h2>
-                <p> My passion for problem-solving and my commitment to continuous improvement drive me to take on challenging projects that push my skills further, ensuring that each application I build meets both user needs and business goals..</p>
+                <p> 📢 Elevate Your Visual Storytelling with Expert Video Editing! 🎬✨
+                In today’s fast-paced digital world, captivating visuals are the key to grabbing attention and leaving a lasting impression. Whether you need cinematic storytelling, dynamic transitions, seamless edits, or eye-catching effects, I bring your ideas to life with precision and creativity...</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
@@ -107,7 +110,7 @@ export const Projects = () => {
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right" src={colorSharp2}></img>
+      
     </section>
   )
 }
