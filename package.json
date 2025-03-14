@@ -2,7 +2,8 @@
   "name": "personal-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Jeevanandham2.github.io/NoisyPortfolio",
+  "homepage": "https://JeevaNandham2.github.io/Nethaji-Folio",
+
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
